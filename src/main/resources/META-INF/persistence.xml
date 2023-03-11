@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="default">
+
+        <class>entity.Destiny</class>
+        <class>entity.Manager</class>
+        <class>entity.Orders</class>
+        <class>entity.PostalCode</class>
+        <class>entity.Product</class>
+        <class>entity.Production</class>
+        <class>entity.Seeds</class>
+        <class>entity.Stock</class>
+        <class>entity.StockOrder</class>
+        <class>entity.Storage</class>
+        <class>entity.Supply</class>
+        <class>entity.SupplySeeds</class>
+        <class>entity.Types</class>
+        <properties>
+            <property name="hibernate.connection.url"
+                      value="jdbc:postgresql://localhost:5432/vegetable-management-company"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.connection.username" value="postgres"/>
+            <property name="hibernate.connection.password" value="pedronx7"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
