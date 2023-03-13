@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "postal_code", schema = "public", catalog = "vegetable-management-company")
@@ -46,10 +47,8 @@ public class PostalCode {
 
         PostalCode that = (PostalCode) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-
-        return true;
+        if (!Objects.equals(id, that.id)) return false;
+        return Objects.equals(description, that.description);
     }
 
     @Override

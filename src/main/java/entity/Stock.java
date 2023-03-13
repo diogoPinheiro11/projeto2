@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigInteger;
 import java.sql.Date;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Stock {
@@ -19,13 +20,13 @@ public class Stock {
     @Column(name = "date")
     private Date date;
     @Basic
-    @Column(name = "id_production", insertable=false, updatable=false)
+    @Column(name = "id_production", insertable = false, updatable = false)
     private int idProduction;
     @Basic
-    @Column(name = "id_product", insertable=false, updatable=false)
+    @Column(name = "id_product", insertable = false, updatable = false)
     private int idProduct;
     @Basic
-    @Column(name = "id_storage", insertable=false, updatable=false)
+    @Column(name = "id_storage", insertable = false, updatable = false)
     private int idStorage;
     @ManyToOne
     @JoinColumn(name = "id_production", referencedColumnName = "id", nullable = false)
@@ -98,10 +99,8 @@ public class Stock {
         if (idProduction != stock.idProduction) return false;
         if (idProduct != stock.idProduct) return false;
         if (idStorage != stock.idStorage) return false;
-        if (producedQty != null ? !producedQty.equals(stock.producedQty) : stock.producedQty != null) return false;
-        if (date != null ? !date.equals(stock.date) : stock.date != null) return false;
-
-        return true;
+        if (!Objects.equals(producedQty, stock.producedQty)) return false;
+        return Objects.equals(date, stock.date);
     }
 
     @Override

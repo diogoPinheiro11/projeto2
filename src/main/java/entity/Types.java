@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Types {
@@ -40,9 +41,7 @@ public class Types {
         Types types = (Types) o;
 
         if (id != types.id) return false;
-        if (description != null ? !description.equals(types.description) : types.description != null) return false;
-
-        return true;
+        return Objects.equals(description, types.description);
     }
 
     @Override

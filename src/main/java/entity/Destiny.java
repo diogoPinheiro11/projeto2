@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Destiny {
@@ -23,7 +24,7 @@ public class Destiny {
     @Column(name = "door")
     private String door;
     @Basic
-    @Column(name = "postal", insertable=false, updatable=false)
+    @Column(name = "postal", insertable = false, updatable = false)
     private String postal;
     @ManyToOne
     @JoinColumn(name = "postal", referencedColumnName = "id", nullable = false)
@@ -87,13 +88,11 @@ public class Destiny {
         Destiny destiny = (Destiny) o;
 
         if (id != destiny.id) return false;
-        if (name != null ? !name.equals(destiny.name) : destiny.name != null) return false;
-        if (phone != null ? !phone.equals(destiny.phone) : destiny.phone != null) return false;
-        if (street != null ? !street.equals(destiny.street) : destiny.street != null) return false;
-        if (door != null ? !door.equals(destiny.door) : destiny.door != null) return false;
-        if (postal != null ? !postal.equals(destiny.postal) : destiny.postal != null) return false;
-
-        return true;
+        if (!Objects.equals(name, destiny.name)) return false;
+        if (!Objects.equals(phone, destiny.phone)) return false;
+        if (!Objects.equals(street, destiny.street)) return false;
+        if (!Objects.equals(door, destiny.door)) return false;
+        return Objects.equals(postal, destiny.postal);
     }
 
     @Override

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigInteger;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "stock_order", schema = "public", catalog = "vegetable-management-company")
@@ -13,7 +14,7 @@ public class StockOrder {
     @Column(name = "id_order")
     private int idOrder;
     @Basic
-    @Column(name = "id_stock", insertable=false, updatable=false)
+    @Column(name = "id_stock", insertable = false, updatable = false)
     private int idStock;
     @Basic
     @Column(name = "order_price")
@@ -81,10 +82,8 @@ public class StockOrder {
         if (idOrder != that.idOrder) return false;
         if (idStock != that.idStock) return false;
         if (Double.compare(that.orderPrice, orderPrice) != 0) return false;
-        if (orderQty != null ? !orderQty.equals(that.orderQty) : that.orderQty != null) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
-
-        return true;
+        if (!Objects.equals(orderQty, that.orderQty)) return false;
+        return Objects.equals(date, that.date);
     }
 
     @Override

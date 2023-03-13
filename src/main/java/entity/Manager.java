@@ -2,8 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
-import java.math.BigInteger;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Manager {
@@ -24,10 +24,10 @@ public class Manager {
     @Column(name = "door")
     private int door;
     @Basic
-    @Column(name = "postal", insertable=false, updatable=false)
+    @Column(name = "postal", insertable = false, updatable = false)
     private String postal;
     @Basic
-    @Column(name = "id_type", insertable=false, updatable=false)
+    @Column(name = "id_type", insertable = false, updatable = false)
     private int idType;
     @ManyToOne
     @JoinColumn(name = "postal", referencedColumnName = "id", nullable = true)
@@ -109,13 +109,11 @@ public class Manager {
 
         if (id != manager.id) return false;
         if (idType != manager.idType) return false;
-        if (name != null ? !name.equals(manager.name) : manager.name != null) return false;
-        if (phone != null ? !phone.equals(manager.phone) : manager.phone != null) return false;
-        if (street != null ? !street.equals(manager.street) : manager.street != null) return false;
+        if (!Objects.equals(name, manager.name)) return false;
+        if (!Objects.equals(phone, manager.phone)) return false;
+        if (!Objects.equals(street, manager.street)) return false;
         if (door != manager.door) return false;
-        if (postal != null ? !postal.equals(manager.postal) : manager.postal != null) return false;
-
-        return true;
+        return Objects.equals(postal, manager.postal);
     }
 
     @Override

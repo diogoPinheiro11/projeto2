@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Storage {
@@ -23,10 +24,10 @@ public class Storage {
     @Column(name = "door")
     private String door;
     @Basic
-    @Column(name = "postal", insertable=false, updatable=false)
+    @Column(name = "postal", insertable = false, updatable = false)
     private String postal;
     @Basic
-    @Column(name = "id_manager", insertable=false, updatable=false)
+    @Column(name = "id_manager", insertable = false, updatable = false)
     private int idManager;
     @OneToMany(mappedBy = "storageByIdStorage")
     private Collection<Orders> ordersById;
@@ -104,13 +105,11 @@ public class Storage {
 
         if (id != storage.id) return false;
         if (idManager != storage.idManager) return false;
-        if (name != null ? !name.equals(storage.name) : storage.name != null) return false;
-        if (phone != null ? !phone.equals(storage.phone) : storage.phone != null) return false;
-        if (street != null ? !street.equals(storage.street) : storage.street != null) return false;
-        if (door != null ? !door.equals(storage.door) : storage.door != null) return false;
-        if (postal != null ? !postal.equals(storage.postal) : storage.postal != null) return false;
-
-        return true;
+        if (!Objects.equals(name, storage.name)) return false;
+        if (!Objects.equals(phone, storage.phone)) return false;
+        if (!Objects.equals(street, storage.street)) return false;
+        if (!Objects.equals(door, storage.door)) return false;
+        return Objects.equals(postal, storage.postal);
     }
 
     @Override

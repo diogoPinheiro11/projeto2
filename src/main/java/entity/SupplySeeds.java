@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigInteger;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "supply_seeds", schema = "public", catalog = "vegetable-management-company")
@@ -13,7 +14,7 @@ public class SupplySeeds {
     @Column(name = "id_seeds")
     private int idSeeds;
     @Basic
-    @Column(name = "id_supply", insertable=false, updatable=false)
+    @Column(name = "id_supply", insertable = false, updatable = false)
     private Integer idSupply;
     @Basic
     @Column(name = "unit_price")
@@ -25,7 +26,7 @@ public class SupplySeeds {
     @Column(name = "date")
     private Date date;
     @Basic
-    @Column(name = "id_manager", insertable=false, updatable=false)
+    @Column(name = "id_manager", insertable = false, updatable = false)
     private int idManager;
     @OneToOne
     @JoinColumn(name = "id_seeds", referencedColumnName = "id", nullable = false)
@@ -95,11 +96,9 @@ public class SupplySeeds {
         if (idSeeds != that.idSeeds) return false;
         if (Double.compare(that.unitPrice, unitPrice) != 0) return false;
         if (idManager != that.idManager) return false;
-        if (idSupply != null ? !idSupply.equals(that.idSupply) : that.idSupply != null) return false;
-        if (seedsQty != null ? !seedsQty.equals(that.seedsQty) : that.seedsQty != null) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
-
-        return true;
+        if (!Objects.equals(idSupply, that.idSupply)) return false;
+        if (!Objects.equals(seedsQty, that.seedsQty)) return false;
+        return Objects.equals(date, that.date);
     }
 
     @Override

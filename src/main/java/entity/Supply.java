@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Supply {
@@ -23,7 +24,7 @@ public class Supply {
     @Column(name = "door")
     private String door;
     @Basic
-    @Column(name = "postal", insertable=false, updatable=false)
+    @Column(name = "postal", insertable = false, updatable = false)
     private String postal;
     @ManyToOne
     @JoinColumn(name = "postal", referencedColumnName = "id", nullable = false)
@@ -87,13 +88,11 @@ public class Supply {
         Supply supply = (Supply) o;
 
         if (id != supply.id) return false;
-        if (name != null ? !name.equals(supply.name) : supply.name != null) return false;
-        if (phone != null ? !phone.equals(supply.phone) : supply.phone != null) return false;
-        if (street != null ? !street.equals(supply.street) : supply.street != null) return false;
-        if (door != null ? !door.equals(supply.door) : supply.door != null) return false;
-        if (postal != null ? !postal.equals(supply.postal) : supply.postal != null) return false;
-
-        return true;
+        if (!Objects.equals(name, supply.name)) return false;
+        if (!Objects.equals(phone, supply.phone)) return false;
+        if (!Objects.equals(street, supply.street)) return false;
+        if (!Objects.equals(door, supply.door)) return false;
+        return Objects.equals(postal, supply.postal);
     }
 
     @Override

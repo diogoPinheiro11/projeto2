@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Product {
@@ -51,10 +52,8 @@ public class Product {
         Product product = (Product) o;
 
         if (id != product.id) return false;
-        if (description != null ? !description.equals(product.description) : product.description != null) return false;
-        if (type != null ? !type.equals(product.type) : product.type != null) return false;
-
-        return true;
+        if (!Objects.equals(description, product.description)) return false;
+        return Objects.equals(type, product.type);
     }
 
     @Override

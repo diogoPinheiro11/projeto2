@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigInteger;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Production {
@@ -21,10 +22,10 @@ public class Production {
     @Column(name = "seeds_qty")
     private BigInteger seedsQty;
     @Basic
-    @Column(name = "id_seeds", insertable=false, updatable=false)
+    @Column(name = "id_seeds", insertable = false, updatable = false)
     private int idSeeds;
     @Basic
-    @Column(name = "id_manager", insertable=false, updatable=false)
+    @Column(name = "id_manager", insertable = false, updatable = false)
     private int idManager;
     @ManyToOne
     @JoinColumn(name = "id_seeds", referencedColumnName = "id", nullable = false)
@@ -93,11 +94,9 @@ public class Production {
         if (id != that.id) return false;
         if (idSeeds != that.idSeeds) return false;
         if (idManager != that.idManager) return false;
-        if (state != null ? !state.equals(that.state) : that.state != null) return false;
-        if (wantedQty != null ? !wantedQty.equals(that.wantedQty) : that.wantedQty != null) return false;
-        if (seedsQty != null ? !seedsQty.equals(that.seedsQty) : that.seedsQty != null) return false;
-
-        return true;
+        if (!Objects.equals(state, that.state)) return false;
+        if (!Objects.equals(wantedQty, that.wantedQty)) return false;
+        return Objects.equals(seedsQty, that.seedsQty);
     }
 
     @Override

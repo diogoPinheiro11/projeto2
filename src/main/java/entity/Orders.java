@@ -9,13 +9,13 @@ public class Orders {
     @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "id_storage", insertable=false, updatable=false)
+    @Column(name = "id_storage", insertable = false, updatable = false)
     private int idStorage;
     @Basic
-    @Column(name = "id_destiny", insertable=false, updatable=false)
+    @Column(name = "id_destiny", insertable = false, updatable = false)
     private int idDestiny;
     @Basic
-    @Column(name = "id_manager", insertable=false, updatable=false)
+    @Column(name = "id_manager", insertable = false, updatable = false)
     private int idManager;
     @ManyToOne
     @JoinColumn(name = "id_storage", referencedColumnName = "id", nullable = false)
@@ -71,9 +71,7 @@ public class Orders {
         if (id != orders.id) return false;
         if (idStorage != orders.idStorage) return false;
         if (idDestiny != orders.idDestiny) return false;
-        if (idManager != orders.idManager) return false;
-
-        return true;
+        return idManager == orders.idManager;
     }
 
     @Override

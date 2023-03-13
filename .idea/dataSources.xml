@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="vegetable-management-company@localhost" uuid="35ef44cc-5b4c-4f06-b2b2-18c7d5c801fc">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/vegetable-management-company</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="default/Hibernate" uuid="df5c8785-9a27-4b73-b82e-08216df773df">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>Hibernate
 
-/Users/pedrodantas/IdeaProjects/Projeto_2/src/main/resources/META-INF/persistence.xml</remarks>
+Users\pinhe\Desktop\universidade\Projeto 2\projeto2\src\main\resources\META-INF</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/vegetable-management-company</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="Vegetable-management-company@localhost" uuid="fb997861-9f78-4b32-a676-c6f4507ca5ad">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/Vegetable-management-company</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
